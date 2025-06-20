@@ -1,13 +1,15 @@
 from django.shortcuts import render
+from .models import Product
 
 def tinoe_store(request):
-	context = {}
-	return render(request, 'tinoe_store/tinoe_store.html', context)
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'tinoe_store/tinoe_store.html', context)
 
 def cart(request):
-	context = {}
-	return render(request, 'tinoe_store/cart.html', context)
+    context = {}
+    return render(request, 'tinoe_store/cart.html', context)
 
 def checkout(request):
-	context = {}
-	return render(request, 'tinoe_store/checkout.html', context)
+    context = {}
+    return render(request, 'tinoe_store/checkout.html', context)
