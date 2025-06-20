@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product
+from .models import *
 
 def tinoe_store(request):
     products = Product.objects.all()
