@@ -12,8 +12,8 @@ def tinoe_store(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
-        cartItems = 0  # Set default for unauthenticated users
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+        cartItems = order.get_cart_items
 
     products = Product.objects.all()
     context = {
@@ -33,7 +33,7 @@ def cart(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = 0
 
     context = {
@@ -52,7 +52,7 @@ def checkout(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = 0
 
     context = {
@@ -76,7 +76,6 @@ def updateItem(request):
         product = Product.objects.get(id=productId)
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
-        # ✅ Fix is here
         orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
         if action == 'add':
