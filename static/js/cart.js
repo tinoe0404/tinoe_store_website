@@ -26,7 +26,7 @@ function updateUserOrder(productId, action) {
            
        },
        body: JSON.stringify({ 'productId': productId, 'action': action })
-       
+
 
    })
 
@@ -35,5 +35,6 @@ function updateUserOrder(productId, action) {
    })
    .then((data) => {
         console.log('data:', data) 
+        location.reload() // Reload the page to see the changes 
    })
 }
