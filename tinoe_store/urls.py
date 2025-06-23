@@ -7,6 +7,7 @@ urlpatterns = [
 	path('', views.tinoe_store, name="tinoe_store"),
 	path('cart/', views.cart, name="cart"),
 	path('checkout/', views.checkout, name="checkout"),
+    path('update_item/', views.updateItem, name="update_item"),
     
 
 ]
