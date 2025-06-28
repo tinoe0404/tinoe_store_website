@@ -14,7 +14,7 @@ def tinoe_store(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-        cartItems = order.get_cart_items
+        cartItems = order['get_cart_items']
 
     products = Product.objects.all()
     context = {
@@ -35,7 +35,7 @@ def cart(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-        cartItems = 0
+        cartItems = order['get_cart_items']
 
     context = {
         'items': items,
@@ -54,7 +54,7 @@ def checkout(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-        cartItems = 0
+        cartItems = order['get_cart_items']
 
     context = {
         'items': items,
@@ -118,5 +118,3 @@ def processOrder(request):
     else:
         print('User is not logged in...')
     return JsonResponse('Payment complete', safe=False)
-
-
