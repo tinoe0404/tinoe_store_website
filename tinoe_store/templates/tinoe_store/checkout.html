@@ -72,6 +72,7 @@
 	<script src="https://www.paypal.com/sdk/js?client-id=AW5XWAFzUnatw1OMOAGitGQT1dISfVIv9vO2z-TvW5D0bYVSDxG4TSzkonj_-08lpVPQ5fJQsA0pecr6&currency=USD"></script>
 
 	<script>
+		var total = '{{order.get_cart_total}}'
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -85,7 +86,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: parseFloat(total).toFixed(2)
                         }
                     }]
                 });
@@ -104,7 +105,7 @@
 
 	<script type="text/javascript">
 		var shipping = '{{order.shipping}}'
-		var total = '{{order.get_cart_total}}'
+		
 
 		if (shipping == 'False'){
 		 	document.getElementById('shipping-info').innerHTML = ''
